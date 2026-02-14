@@ -130,11 +130,13 @@ body{
   font-size: 0.95rem;
 }
 
-/* Link de ver mas  */
+/* Ver más*/
 .link-ver-mas {
-  display: inline-block;
-  margin-top: 1.2rem;
-  color: var(--color-naranja);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 1rem;
+  color: #E57F12;
   text-decoration: none;
   font-size: 0.8rem;
 }
@@ -155,23 +157,75 @@ body{
 }
 
 
-/*--Servicios*/
+/* -- Servicios -- */
 .section-servicios-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.7fr);
+  gap: 4rem;
+  align-items: center;
   background-color: #ffffff;
 }
 
-.section-servicios-text {
-  max-width: 600px;
+/* título a la izquierda */
+.section-servicios-titulo {
+  display: flex;
+  justify-content: center;   
 }
 
-.section-servicios-text h2 {
-  color: #E57F12;
-  margin-top: 0;
+.section-servicios-titulo h2 {
+  color: #E57F12;            
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin: 0;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
+/* Texto a la derecha*/
+.section-servicios-text {
+  max-width: 420px;
 }
 
 .section-servicios-text p {
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+  font-size: 0.95rem;
 }
+
+/* Ver más*/
+.link-ver-mas {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 1rem;
+  color: #E57F12;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+.link-ver-mas :hover {
+  text-decoration:underline;
+}
+
+.link-ver-mas-icono {
+  font-size: 0.9rem;
+  color: #E57F12;
+}
+
+
+/* Responsive sencillo */
+@media (max-width: 900px) {
+  .section-servicios-intro {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .section-servicios-titulo {
+    justify-content: flex-start;
+  }
+}
+
 
 /* -- SLIDER DE EVENTOS - CALENDARIO -- */ /*    REVISAR, CORREGIR LOS ESPACIOS DONDE VAN LAS FOTOS (CARRUSEL)     */
 .section-proximamente {
