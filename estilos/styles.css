@@ -245,14 +245,16 @@ body{
   text-decoration: none;
   font-size: 0.8rem;
 }
-.link-ver-mas :hover {
+.link-ver-mas:hover {
   text-decoration:underline;
 }
 
-.link-ver-mas-icono {
+/*.link-ver-mas-icono {
   font-size: 0.9rem;
   color: #E57F12;
-}
+  text-decoration: none;
+}*/
+
 
 
 /* Responsive sencillo */
@@ -269,7 +271,7 @@ body{
 
 
 /* -- SLIDER DE EVENTOS - CALENDARIO -- */
-/* -- SLIDER DE EVENTOS - CALENDARIO -- */
+
 
 .section-proximamente {
   display: grid;
