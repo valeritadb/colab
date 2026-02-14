@@ -33,28 +33,61 @@ body{
   overflow: hidden;             
 }
 
-/* Menú arriba derecha */
+/*Menu de arriba a la derecha*/
 .main-nav {
   position: absolute;
   top: 2.5rem;
   right: 8vw;
   display: flex;
-  flex-direction: column;       
+  flex-direction: column;
   align-items: flex-end;
   gap: 0.3rem;
   font-size: 0.85rem;
-  
-}
-.main-nav a{
-  color: #E57F12;
-  text-decoration: none;
-  transition: all ease 0.3s;
 }
 
-.main-nav a:hover{
-  color: var(--color-azul);
+.main-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #E57F12;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
+
+.icono-links {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* tamaño general de todos los svg */
+.icono-links img {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+/* por defecto: solo naranja visible */
+.icono-links-normal {
+  display: inline-block;
+}
+
+.icono-links-hover {
+  display: none;
+}
+
+/* hover: cambia texto e icono */
+.main-nav a:hover {
+  color: var(--color-azul);
+}
+
+.main-nav a:hover .icono-links-normal {
+  display: none;
+}
+
+.main-nav a:hover .icono-links-hover {
+  display: inline-block;
+}
+
+
 
 /* LOGO centrado en la zona media */
 .hero-logo {
@@ -225,17 +258,20 @@ body{
 }
 
 /* VER MAS DE AMBOS INTROS */
+
 .link-ver-mas {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
   margin-top: 1rem;
-  font-size: 0.8rem;
+  font-size: 0.8rem;       
 }
 
-/* Icono fijo en naranja*/ /*Por ahora, sustituir por svg*/
-.link-ver-mas-icono {
-  color: #E57F12;
+/* Icono SVG */
+.link-ver-mas-icono img {
+  width: 0.8rem;              
+  height: 0.8rem;
+  display: block;
 }
 
 .link-ver-mas a {
@@ -250,6 +286,7 @@ body{
 .link-ver-mas-texto:hover {
   text-decoration: underline;
 }
+
 
 
 /*.link-ver-mas-icono {
