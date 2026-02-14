@@ -26,73 +26,114 @@ body{
 }
 
 /* --  ESTILOS DE LA PORTADA -- */
-.hero{
-    position: relative;
-    min-height: 100vh;
-    padding: 2rem 8vw;
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 2rem 8vw;
+  overflow: hidden;             
 }
 
-/*--Menú de arriba la derecha*/
-.main-nav{
-    position: absolute;
-    top: 2rem;
-    right: 8vw;
-    display: flex;
-    gap: 1rem;
-    font-size: 0.9rem;
+/* Menú arriba derecha */
+.main-nav {
+  position: absolute;
+  top: 2.5rem;
+  right: 8vw;
+  display: flex;
+  flex-direction: column;       
+  align-items: flex-end;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  
 }
-.main-nav a {
-    text-decoration: none;
-    color: #000000;
-    text-transform: lowercase; /*minusculas*/
-    transition: color 0.2s ease; /*que cambie de color suavecito*/
+.main-nav a{
+  color: #E57F12;
+  text-decoration: none;
+  transition: all ease 0.3s;
 }
 
 .main-nav a:hover{
-    color: #E57F12;
+  color: var(--color-azul);
+  text-decoration: none;
 }
 
-.main-nav a:active{
-    color: #9CCDCE;
+/* LOGO centrado en la zona media */
+.hero-logo {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;              /* ocupa la mayor parte de la pantalla */
+  pointer-events: none;
 }
 
-/* -- LOGO CENTRADO -- */
-.hero-logo{
-    text-align: center;
-    margin-top: 15rem;
-    pointer-events: none;
+.hero-logo-text {
+  font-size: 6rem;
+  letter-spacing: 0.1rem;
+  margin: 0;
 }
 
-.hero-logo-text{
-    font-size: 6rem;
-    letter-spacing: 0.1rem;
-    margin: 0;
+/* CONTENEDORES PARA LAS ILUSTRACIONES */
+.hero-recursos {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
-/* -- CONTENEDORES PARA LAS ILUSTRACIONES -- */ 
-/*AGREGAR LAS ILUSTRACIONES Y CAMBIAR EL ESTILO*/
-.hero-recursos{
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+/* izquierda: personaje tumbado, bastante grande abajo a la izquierda */
+.hero-recurso-izq {
+  position: absolute;
+  width: 320px;
+  height: 220px;
+  left: 6vw;
+  bottom: 6vh;
+  border: 1px dashed #ccc;       /* solo marcador, quita cuando pongas la ilu */
 }
 
-.hero-recurso{
-    position: absolute;
+/* derecha: gato + jarrón, algo más pequeño arriba a la derecha */
+.hero-recurso-der {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  right: 6vw;
+  top: 8vh;
+  border: 1px dashed #ccc;
+}
+
+/* Responsive básico para móviles */
+@media (max-width: 768px) {
+  .hero {
+    padding: 1.5rem 5vw;
+  }
+
+  .hero-logo {
+    min-height: 60vh;
+  }
+
+  .hero-logo-text {
+    font-size: 3.5rem;
+  }
+
+  .hero-recurso-izq {
+    width: 220px;
+    height: 150px;
+    left: 4vw;
+    bottom: 4vh;
+  }
+
+  .hero-recurso-der {
     width: 200px;
     height: 200px;
-    border: 1px dashed #ccc;
+    right: 4vw;
+    top: 6vh;
+  }
+
+  .main-nav {
+    top: 1.5rem;
+    right: 5vw;
+    font-size: 0.8rem;
+  }
 }
 
-.hero-recurso-izq{
-    left: 8vw;
-    bottom: 10vh;
-}
-
-.hero-recurso-der{
-    right: 8vw;
-    top: 20vh;
-}
 
 /* -- INTRODUCCIÓN A CADA SECCIÓN-- */
 
