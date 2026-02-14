@@ -171,17 +171,6 @@ body{
   font-size: 0.95rem;
 }
 
-/* Ver más*/
-.link-ver-mas {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  margin-top: 1rem;
-  color: #E57F12;
-  text-decoration: none;
-  font-size: 0.8rem;
-}
-
 /* Contenedor de la ilustración */
 .section-espacio-recurso {
   min-height: 320px;
@@ -235,19 +224,33 @@ body{
   font-size: 0.95rem;
 }
 
-/* Ver más*/
+/* VER MAS DE AMBOS INTROS */
 .link-ver-mas {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
   margin-top: 1rem;
-  color: #E57F12;
-  text-decoration: none;
   font-size: 0.8rem;
 }
-.link-ver-mas:hover {
-  text-decoration:underline;
+
+/* Icono fijo en naranja*/ /*Por ahora, sustituir por svg*/
+.link-ver-mas-icono {
+  color: #E57F12;
 }
+
+.link-ver-mas a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.link-ver-mas-texto {
+  color: #E57F12;
+}
+
+.link-ver-mas-texto:hover {
+  text-decoration: underline;
+}
+
 
 /*.link-ver-mas-icono {
   font-size: 0.9rem;
@@ -351,7 +354,7 @@ body{
 /* Flechas del carrusel a izquierda y derecha del bloque de foto */
 .proximamente-arrow {
   position: absolute;
-  top: 50%;
+  top: 55%;                
   transform: translateY(-50%);
   width: auto;
   height: auto;
@@ -445,19 +448,11 @@ body{
   }
 
   .proximamente-arrow-left {
-    left: 8px;
+    left: -6px;  
   }
 
   .proximamente-arrow-right {
-    right: 8px;
-  }
-
-  .proximamente-content h2 {
-    font-size: 1.6rem;
-  }
-
-  .proximamente-down-arrow {
-    font-size: 2rem;
+    right: -6px;  
   }
 }
 
