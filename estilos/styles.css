@@ -227,18 +227,20 @@ body{
 }
 
 
-/* -- SLIDER DE EVENTOS - CALENDARIO -- */ /*    REVISAR, CORREGIR LOS ESPACIOS DONDE VAN LAS FOTOS (CARRUSEL)     */
+/* -- SLIDER DE EVENTOS - CALENDARIO -- */
+
 .section-proximamente {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 2rem;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.3fr);
+  gap: 3rem;
   align-items: center;
 }
 
 /* COLUMNA IZQUIERDA: SLIDER */
+
 .proximamente-media {
   position: relative;
-  min-height: 320px;
+  min-height: 340px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -247,37 +249,36 @@ body{
 .proximamente-slider {
   position: relative;
   width: 100%;
-  max-width: 380px;
-  height: 260px;
+  max-width: 320px;
+  height: 380px;
   margin: 0 auto;
 }
 
-/* “Pila” de recuadros detrás de la foto */
-.slider-layer {
+/* Marcos naranjas del fondo */
+.slider-frame {
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 1px dashed #ccc;
-  background: #fafafa;
+  border: 3px solid var(--color-naranja);
+  background: transparent;
   z-index: 1;
-  transition: transform 0.3s ease;
 }
 
-.slider-layer--1 {
-  transform: translate(12px, 12px);
+.slider-frame--1 {
+  transform: translate(16px, 16px);
 }
 
-.slider-layer--2 {
-  transform: translate(24px, 24px);
+.slider-frame--2 {
+  transform: translate(32px, 32px);
 }
 
-/* Contenedor de slides (apiladas) */
+/* Contenedor de slides (solo una visible) */
 .proximamente-track {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 2;
   overflow: hidden;
+  background: #ffffff;
 }
 
 /* Slide base */
@@ -295,58 +296,101 @@ body{
   transform: translateX(0);
 }
 
-/* Caja donde luego irá la imagen real */
-.slide-img {
+/* Imagen dentro del slider */
+.slide img {
   width: 100%;
   height: 100%;
-  border: 1px dashed #999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ddd;
-  font-size: 1rem;
+  object-fit: cover;
+  display: block;
 }
 
-/* Texto bajo la imagen */
+/* Texto blanco sobre la foto (esquina inferior izquierda) */
 .proximamente-media-caption {
-  font-size: 0.9rem;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+  color: #ffffff;
+  font-size: 1.1rem;
+  padding: 0.5rem 0.8rem;
 }
 
-/* Flechas del carrusel */
+/* Flechas del carrusel a izquierda y derecha del bloque de foto */
 .proximamente-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid #000;
-  background: #fff;
+  width: auto;
+  height: auto;
+  border: none;
+  background: none;
+  font-size: 2rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .proximamente-arrow-left {
-  left: -16px;
+  left: -24px;
 }
 
 .proximamente-arrow-right {
-  right: -16px;
+  right: -24px;
 }
 
-/* COLUMNA DERECHA: texto */
+/* COLUMNA DERECHA: texto calendario */
+
 .proximamente-content h2 {
   text-transform: lowercase;
   color: var(--color-naranja);
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.proximamente-content p {
+  max-width: 360px;
+  margin-bottom: 1.5rem;
+}
+
+.proximamente-down-arrow {
+  font-size: 2.4rem;
+  margin: 0.5rem 0 1.5rem;
 }
 
 .proximamente-lista {
   list-style: none;
   padding: 0;
-  margin: 1rem 0 0;
+  margin: 0;
 }
+
+.proximamente-lista li {
+  margin-bottom: 0.5rem;
+}
+
+.proximamente-lista a {
+  color: var(--color-negro);
+  text-decoration: underline;
+}
+
+/* Responsive básico */
+
+@media (max-width: 900px) {
+  .section-proximamente {
+    grid-template-columns: 1fr;
+  }
+
+  .proximamente-arrow-left {
+    left: 4px;
+  }
+
+  .proximamente-arrow-right {
+    right: 4px;
+  }
+
+  .proximamente-content p {
+    max-width: none;
+  }
+}
+
 
 /* -- FOOTER -- */
 .footer-top {

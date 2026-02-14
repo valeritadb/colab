@@ -1,12 +1,10 @@
 // Carrusel de la sección "próximamente"
-
 document.addEventListener('DOMContentLoaded', () => {
   const slides = document.querySelectorAll('.proximamente-track .slide');
   const btnPrev = document.getElementById('prevSlide');
   const btnNext = document.getElementById('nextSlide');
-  const layer1 = document.querySelector('.slider-layer--1');
-  const layer2 = document.querySelector('.slider-layer--2');
 
+  // seguridad básica
   if (!slides.length || !btnPrev || !btnNext) return;
 
   let currentIndex = 0;
@@ -15,37 +13,35 @@ document.addEventListener('DOMContentLoaded', () => {
   function showSlide(newIndex, direction = 1) {
     const oldSlide = slides[currentIndex];
 
-    // calcular índice nuevo (carrusel infinito)
-    currentIndex = (newIndex + totalSlides) % totalSlides;
-    const currentSlide = slides[currentIndex];
-
-    // reset clases
+    // quitar activa del slide actual
     oldSlide.classList.remove('slide--active');
-    currentSlide.classList.remove('slide--active');
+    oldSlide.style.opacity = '0';
+
+    // índice nuevo INFINITO:
+    // - siguiente desde el último → vuelve a 0
+    // - anterior desde el primero → va al último
+    currentIndex = (newIndex + totalSlides) % totalSlides;
+    const nextSlide = slides[currentIndex];
 
     // posición inicial de entrada según la dirección
-    currentSlide.style.transform = `translateX(${30 * direction}px)`;
-    currentSlide.style.opacity = '0';
+    nextSlide.style.transform = `translateX(${30 * direction}px)`;
+    nextSlide.style.opacity = '0';
 
+    // en el siguiente frame activamos la transición
     requestAnimationFrame(() => {
-      currentSlide.classList.add('slide--active');
-      currentSlide.style.transform = 'translateX(0)';
-      currentSlide.style.opacity = '1';
+      nextSlide.classList.add('slide--active');
+      nextSlide.style.transform = 'translateX(0)';
+      nextSlide.style.opacity = '1';
     });
-
-    // movimiento suave de las capas del fondo
-    const offset = currentIndex * 2;
-    if (layer1 && layer2) {
-      layer1.style.transform = `translate(${12 + offset}px, ${12 + offset}px)`;
-      layer2.style.transform = `translate(${24 + offset}px, ${24 + offset}px)`;
-    }
   }
 
   btnNext.addEventListener('click', () => {
-    showSlide(currentIndex + 1, 1); // entra desde la derecha
+    showSlide(currentIndex + 1, 1);   // siguiente
   });
 
   btnPrev.addEventListener('click', () => {
-    showSlide(currentIndex - 1, -1); // entra desde la izquierda
+    showSlide(currentIndex - 1, -1);  // anterior
   });
 });
+
+
