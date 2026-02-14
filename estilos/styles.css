@@ -43,6 +43,7 @@ body{
   align-items: flex-end;
   gap: 0.3rem;
   font-size: 0.85rem;
+  transition: all ease 0.5s;
 }
 
 .main-nav a {
@@ -51,7 +52,6 @@ body{
   gap: 0.25rem;
   color: #E57F12;
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
 .icono-links {
