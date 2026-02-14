@@ -372,22 +372,69 @@ body{
 }
 
 /* Responsive básico */
-
 @media (max-width: 900px) {
   .section-proximamente {
-    grid-template-columns: 1fr;
-  }
-
-  .proximamente-arrow-left {
-    left: 4px;
-  }
-
-  .proximamente-arrow-right {
-    right: 4px;
+    grid-template-columns: 1fr;      /* slider arriba, calendario debajo */
+    gap: 2rem;
   }
 
   .proximamente-content p {
     max-width: none;
+  }
+}
+
+/* Responsive móvil más estrecho */
+@media (max-width: 600px) {
+  .proximamente-media {
+    align-items: center;
+    min-height: auto;
+  }
+
+  .proximamente-slider {
+    max-width: 260px;               /* slider más estrecho */
+    height: 320px;                  /* un poco más bajo */
+  }
+
+  .slider-frame {
+    border-width: 2px;
+  }
+
+  .slider-frame--1 {
+    transform: translate(10px, 10px);
+  }
+
+  .slider-frame--2 {
+    transform: translate(20px, 20px);
+  }
+
+  /* flechas dentro del ancho visible */
+  .proximamente-arrow {
+    font-size: 1.6rem;
+  }
+
+  .proximamente-arrow-left {
+    left: 8px;
+  }
+
+  .proximamente-arrow-right {
+   right: 8px;
+  }
+
+  .proximamente-media-caption {
+    font-size: 0.9rem;
+  }
+
+  /* calendario debajo, centrado un poco */
+  .proximamente-content {
+    text-align: left;
+  }
+
+  .proximamente-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .proximamente-down-arrow {
+    font-size: 2rem;
   }
 }
 
