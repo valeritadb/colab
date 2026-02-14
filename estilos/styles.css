@@ -228,6 +228,7 @@ body{
 
 
 /* -- SLIDER DE EVENTOS - CALENDARIO -- */
+/* -- SLIDER DE EVENTOS - CALENDARIO -- */
 
 .section-proximamente {
   display: grid;
@@ -304,17 +305,6 @@ body{
   display: block;
 }
 
-/* Texto blanco sobre la foto (esquina inferior izquierda) */
-.proximamente-media-caption {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: 3;
-  color: #ffffff;
-  font-size: 1.1rem;
-  padding: 0.5rem 0.8rem;
-}
-
 /* Flechas del carrusel a izquierda y derecha del bloque de foto */
 .proximamente-arrow {
   position: absolute;
@@ -329,11 +319,11 @@ body{
 }
 
 .proximamente-arrow-left {
-  left: -24px;
+  left: 4px;
 }
 
 .proximamente-arrow-right {
-  right: -24px;
+  right: 4px;
 }
 
 /* COLUMNA DERECHA: texto calendario */
@@ -371,10 +361,10 @@ body{
   text-decoration: underline;
 }
 
-/* Responsive básico */
+/* Responsive tablet */
 @media (max-width: 900px) {
   .section-proximamente {
-    grid-template-columns: 1fr;      /* slider arriba, calendario debajo */
+    grid-template-columns: 1fr;   /* slider arriba, calendario debajo */
     gap: 2rem;
   }
 
@@ -383,7 +373,7 @@ body{
   }
 }
 
-/* Responsive móvil más estrecho */
+/* Responsive móvil */
 @media (max-width: 600px) {
   .proximamente-media {
     align-items: center;
@@ -391,8 +381,8 @@ body{
   }
 
   .proximamente-slider {
-    max-width: 260px;               /* slider más estrecho */
-    height: 320px;                  /* un poco más bajo */
+    max-width: 260px;
+    height: 320px;
   }
 
   .slider-frame {
@@ -407,7 +397,6 @@ body{
     transform: translate(20px, 20px);
   }
 
-  /* flechas dentro del ancho visible */
   .proximamente-arrow {
     font-size: 1.6rem;
   }
@@ -417,16 +406,7 @@ body{
   }
 
   .proximamente-arrow-right {
-   right: 8px;
-  }
-
-  .proximamente-media-caption {
-    font-size: 0.9rem;
-  }
-
-  /* calendario debajo, centrado un poco */
-  .proximamente-content {
-    text-align: left;
+    right: 8px;
   }
 
   .proximamente-content h2 {
