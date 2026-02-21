@@ -152,11 +152,11 @@ body{
 }
 
 .hero-recurso-izq img {
-  width: 380px;   /* personaje más ancho */
+  width: 380px;   
 }
 
 .hero-recurso-der img {
-  width: 280px;   /* gato algo más pequeño */
+  width: 280px;   
 }
 
 @media (max-width: 760px) {
@@ -178,12 +178,12 @@ body{
 
   .hero-recurso-izq {
     left: 6vw;
-    bottom: 35vh;
+    bottom: 45vh;
   }
 
   .hero-recurso-der {
     right: 6vw;
-    top: 20vh;
+    top: 15vh;
   }
 
   .main-nav {
