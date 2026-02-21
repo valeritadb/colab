@@ -183,12 +183,12 @@ body{
 
   .hero-recurso-izq {
     left: 1vw;
-    bottom: 30vh;
+    bottom: 20vh;
   }
 
   .hero-recurso-der {
     right: 6vw;
-    top: 15vh;
+    top: 10vh;
   }
 
   .main-nav {
