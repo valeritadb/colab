@@ -162,7 +162,7 @@ body{
 @media (max-width: 760px) {
 
   .hero{
-    min-height: 65svh;
+    min-height: 70svh;
     padding-bottom: 0;
   }
   .hero-logo {
@@ -183,12 +183,12 @@ body{
 
   .hero-recurso-izq {
     left: 1vw;
-    bottom: 20vh;
+    bottom: 18vh;
   }
 
   .hero-recurso-der {
     right: 6vw;
-    top: 10vh;
+    top: 8vh;
   }
 
   .main-nav {
