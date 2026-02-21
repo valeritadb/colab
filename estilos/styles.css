@@ -160,42 +160,41 @@ body{
 }
 
 @media (max-width: 760px) {
-  .hero {
-    padding: 1.5rem 5vw;
-  }
-
+  /* Menos alto del hero para que no haya tanto espacio antes del contenido */
   .hero-logo {
-    min-height: 80vh;
+    min-height: 70svh; /* mejor que vh en iPhone */
   }
 
+  /* Logo responsive (sin “saltos” raros) */
   .hero-logo-text {
-    font-size: 10rem;
+    font-size: clamp(4.5rem, 18vw, 10rem);
   }
 
-  /* ilustración izquierda: más pequeña y un poco más arriba */
-  .hero-recurso-izq {
-    left: 4vw;
-    bottom: 44vh;
-  }
-
+  /* Ilustraciones: escalan con pantalla pero con límites */
   .hero-recurso-izq img {
-    max-width: 200px;
-  }
-
-  .hero-recurso-der {
-    right: 4vw;
-    top: 25vh;
+    width: clamp(220px, 62vw, 380px);
   }
 
   .hero-recurso-der img {
-    max-width: 160px;
+    width: clamp(160px, 45vw, 280px);
   }
 
-  /* menú un poco más pegado */
+  /* Mantén posiciones parecidas, pero un pelín más a los bordes (como en tu referencia) */
+  .hero-recurso-izq {
+    left: 6vw;
+    bottom: 10vh;
+  }
+
+  .hero-recurso-der {
+    right: 6vw;
+    top: 10vh;
+  }
+
+  /* Menú más compacto */
   .main-nav {
-    top: 1.5rem;
+    top: 1.2rem;
     right: 5vw;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 }
 
