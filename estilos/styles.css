@@ -53,6 +53,7 @@ body{
   gap: 0.3rem;
   font-size: 0.85rem;
   transition: all ease 0.3s;
+  z-index: 20;
 }
 
 .main-nav a {
