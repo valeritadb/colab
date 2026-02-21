@@ -169,7 +169,7 @@ body{
   }
 
   .hero-recurso-izq img {
-    width: clamp(180px , 50vw, 260px);
+    width: clamp(150px , 50vw, 260px);
   }
 
   .hero-recurso-der img {
@@ -178,7 +178,7 @@ body{
 
   .hero-recurso-izq {
     left: 3vw;
-    bottom: 45vh;
+    bottom: 48vh;
   }
 
   .hero-recurso-der {
