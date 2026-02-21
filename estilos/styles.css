@@ -40,7 +40,6 @@ body{
   position: relative;
   min-height: 100vh;
   padding: 2rem 8vw;
-  overflow: hidden;             
 }
 
 /*Menu de arriba a la derecha*/
@@ -53,7 +52,7 @@ body{
   align-items: flex-end;
   gap: 0.3rem;
   font-size: 0.85rem;
-  transition: all ease 0.5s;
+  transition: all ease 0.3s;
 }
 
 .main-nav a {
@@ -160,39 +159,36 @@ body{
   width: 280px;   /* gato algo más pequeño */
 }
 
-/* Responsive portada: tablets y móviles */
-@media (max-width: 1024px) {
+@media (max-width: 760px) {
   .hero {
     padding: 1.5rem 5vw;
   }
 
-  /* logo ocupa más alto, pero deja sitio a las ilus */
   .hero-logo {
-    min-height: 55vh;
+    min-height: 80vh;
   }
 
   .hero-logo-text {
-    font-size: 4rem;
+    font-size: 10rem;
   }
 
   /* ilustración izquierda: más pequeña y un poco más arriba */
   .hero-recurso-izq {
     left: 4vw;
-    bottom: 6vh;
+    bottom: 44vh;
   }
 
   .hero-recurso-izq img {
-    width: 200px;
+    max-width: 200px;
   }
 
-  /* ilustración derecha: más pequeña y más separada del borde superior */
   .hero-recurso-der {
     right: 4vw;
-    top: 10vh;
+    top: 25vh;
   }
 
   .hero-recurso-der img {
-    width: 180px;
+    max-width: 160px;
   }
 
   /* menú un poco más pegado */
@@ -200,21 +196,6 @@ body{
     top: 1.5rem;
     right: 5vw;
     font-size: 0.8rem;
-  }
-}
-
-/* Móvil muy estrecho (iPhone en vertical) */
-@media (max-width: 600px) {
-  .hero-logo-text {
-    font-size: 3.2rem;
-  }
-
-  .hero-recurso-izq img {
-    width: 180px;
-  }
-
-  .hero-recurso-der img {
-    width: 160px;
   }
 }
 
