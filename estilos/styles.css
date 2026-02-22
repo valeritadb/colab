@@ -41,17 +41,17 @@ body{
  position: relative;
   width: 100%;
   min-height: 100vh;
-  min-height: 100svh;       /* Respaldo para moviles con barra dinamica */
+  min-height: 100svh;      
   padding: 2rem 8vw;
-  overflow: hidden;          /* CAMBIO: Evita que las ilustraciones creen scroll */
+  overflow: hidden;       
   background: #ffffff;
 }
 
 /*Menu de arriba a la derecha*/
 .main-nav {
- position: absolute;
+  position: absolute;
   top: 2.5rem;
-  right: 8vw;
+  right: 2vw;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -67,7 +67,7 @@ body{
   gap: 0.25rem;
   color: #E57F12;
   text-decoration: none;
-  white-space: nowrap;      /* CAMBIO: Evita que los links se partan en moviles */
+  white-space: nowrap;      
 }
 
 
