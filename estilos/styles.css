@@ -29,6 +29,7 @@ body{
     font-family: var(--font-main);
     color: var(--color-negro);
     background-color: var(--color-blanco);
+    overflow-x: hidden;
 }
 
 .section{
@@ -37,14 +38,18 @@ body{
 
 /* --  ESTILOS DE LA PORTADA -- */
 .hero {
-  position: relative;
+ position: relative;
+  width: 100%;
   min-height: 100vh;
+  min-height: 100svh;       /* Respaldo para moviles con barra dinamica */
   padding: 2rem 8vw;
+  overflow: hidden;          /* CAMBIO: Evita que las ilustraciones creen scroll */
+  background: #ffffff;
 }
 
 /*Menu de arriba a la derecha*/
 .main-nav {
-  position: absolute;
+ position: absolute;
   top: 2.5rem;
   right: 8vw;
   display: flex;
@@ -62,6 +67,7 @@ body{
   gap: 0.25rem;
   color: #E57F12;
   text-decoration: none;
+  white-space: nowrap;      /* CAMBIO: Evita que los links se partan en moviles */
 }
 
 
@@ -99,7 +105,16 @@ body{
   display: inline-block;
 }
 
-
+/* Contenedor grande */
+.hero-stage{
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* LOGO centrado en la zona media */
 .hero-logo {
@@ -107,19 +122,19 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;              
   cursor: default;
   z-index: 10;
 
 }
 
 .hero-logo-text {
-  font-size: 12rem;
+  font-size: clamp(4rem, 12vw, 14rem);
   letter-spacing: 0.1rem;
   margin: 0;
   font-family: 'FutureBK', sans-serif;
   color: #000000;
   transition: all ease 0.5s;
+  line-height: 1;
 }
 
 .hero-logo-text:hover{
@@ -131,72 +146,36 @@ body{
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: 5;
+}
+
+.hero-recurso img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 /* izquierda */
 .hero-recurso-izq {
   position: absolute;
-  left: 16vw;
-  bottom: 17vh;
+  left: 12vw;
+  bottom: 12vh;
+}
+
+.hero-recurso-izq img{
+  width: clamp(180px, 25vw, 380px);
 }
 
 /* derecha */
 .hero-recurso-der {
   position: absolute;
-  right: 17vw;
-  top: 10vh;
-}
-
-/* Escalar las imagenes aqui (svg) */
-.hero-recurso img {
-  display: block;
-  max-width: 100%;
-}
-
-.hero-recurso-izq img {
-  width: 380px;   
+  right: 15vw;
+  top: 8vh;
 }
 
 .hero-recurso-der img {
-  width: 280px;   
+  width: clamp(140px, 20vw, 280px);
 }
-
-@media (max-width: 760px) {
-  .hero-logo {
-    min-height: 70svh; 
-  }
-
-  .hero-logo-text {
-    font-size: clamp(4.5rem, 18vw, 10rem);
-  }
-
-  .hero-recurso-izq img {
-    width: clamp(120px, 50vw, 260px);
-  }
-
-  .hero-recurso-der img {
-    width: clamp(160px, 45vw, 120px);
-  }
-
-  .hero-recurso-izq {
-    left: 1.5vw;
-    bottom: 48vh;
-  }
-
-  .hero-recurso-der {
-    right: 6vw;
-    top: 15vh;
-  }
-
-  .main-nav {
-    top: 1.2rem;
-    right: 5vw;
-    font-size: 0.85rem;
-  }
-}
-
-
 
 /* -- INTRODUCCIÓN A CADA SECCIÓN-- */
 
