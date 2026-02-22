@@ -159,22 +159,22 @@ body{
 .hero-recurso-izq {
   position: absolute;
   left: 12vw;
-  bottom: 12vh;
+  bottom: 20vh;
 }
 
 .hero-recurso-izq img{
-  width: clamp(180px, 25vw, 380px);
+  width: clamp(350px, 25vw, 400px);
 }
 
 /* derecha */
 .hero-recurso-der {
   position: absolute;
-  right: 15vw;
+  right: 9vw;
   top: 8vh;
 }
 
 .hero-recurso-der img {
-  width: clamp(140px, 20vw, 280px);
+  width: clamp(350px, 20vw, 400px);
 }
 
 /* -- INTRODUCCIÓN A CADA SECCIÓN-- */
@@ -218,7 +218,7 @@ body{
   min-height: 320px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
 }
 
 /* Ajustar cuando se ponga la ilustración*/
@@ -232,7 +232,7 @@ body{
 /* -- Servicios -- */
 .section-servicios-intro {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.7fr);
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1.7fr);
   gap: 4rem;
   align-items: center;
   background-color: #ffffff;
@@ -267,7 +267,6 @@ body{
 }
 
 /* VER MAS DE AMBOS INTROS */
-
 .link-ver-mas {
   display: inline-flex;
   align-items: center;
@@ -296,32 +295,7 @@ body{
   text-decoration: underline;
 }
 
-
-
-/*.link-ver-mas-icono {
-  font-size: 0.9rem;
-  color: #E57F12;
-  text-decoration: none;
-}*/
-
-
-
-/* Responsive sencillo */
-@media (max-width: 900px) {
-  .section-servicios-intro {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .section-servicios-titulo {
-    justify-content: flex-start;
-  }
-}
-
-
 /* -- SLIDER DE EVENTOS - CALENDARIO -- */
-
-
 .section-proximamente {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.3fr);
@@ -453,56 +427,6 @@ body{
   text-decoration: underline;
 }
 
-/* Responsive tablet */
-@media (max-width: 900px) {
-  .section-proximamente {
-    grid-template-columns: 1fr;   /* slider arriba, calendario debajo */
-    gap: 2rem;
-  }
-
-  .proximamente-content p {
-    max-width: none;
-  }
-}
-
-/* Responsive móvil */
-@media (max-width: 600px) {
-  .proximamente-media {
-    align-items: center;
-    min-height: auto;
-  }
-
-  .proximamente-slider {
-    max-width: 260px;
-    height: 320px;
-  }
-
-  .slider-frame {
-    border-width: 2px;
-  }
-
-  .slider-frame--1 {
-    transform: translate(10px, 10px);
-  }
-
-  .slider-frame--2 {
-    transform: translate(20px, 20px);
-  }
-
-  .proximamente-arrow {
-    font-size: 1.6rem;
-  }
-
-  .proximamente-arrow-left {
-    left: -6px;  
-  }
-
-  .proximamente-arrow-right {
-    right: -6px;  
-  }
-}
-
-
 /* -- FOOTER -- */
 .footer-top {
   background-color: var(--color-azul);
@@ -546,35 +470,5 @@ body{
 .footer-legal a {
   text-decoration: none;
   color: var(--color-negro);
-}
-
-/* -- MEDIA QUERIES BÁSICOS -- */
-
-@media (max-width: 900px) {
-  .hero-logo-text {
-    font-size: 4rem;
-  }
-
-  .section-espacio-intro,
-  .section-proximamente {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-graphic-left,
-  .hero-graphic-right {
-    display: none;
-  }
-
-  .footer-top-inner {
-    flex-direction: column;
-  }
-
-  .proximamente-arrow-left {
-    left: 4px;
-  }
-
-  .proximamente-arrow-right {
-    right: 4px;
-  }
 }
 
