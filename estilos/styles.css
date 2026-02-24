@@ -1,52 +1,4 @@
 /* =============================================
-   VARIABLES
-   ============================================= */
-:root {
-  --color-negro: #000;
-  --color-blanco: #fff;
-  --color-naranja: #E57F12;
-  --color-azul: #9CCDCE;
-  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-
-  /* Layout: Reducimos un poco el padding vertical para que fluyan mejor las secciones */
-  --section-py: 6rem;
-  --section-px: 8vw;
-  --hero-py: 2rem;
-  --hero-px: 8vw;
-
-  /* Tipografía */
-  --h2-size: 2.4rem;
-  --h2-weight: 600;
-  --p-size: .95rem;
-  --p-lh: 1.5;
-
-  /* Decoración */
-  --underline-thick: .1875rem;
-  --underline-offset: .375rem;
-
-  /* UI */
-  --icon-size: .8rem;
-  --frame-b: .1875rem;
-
-  /* Slider */
-  --slider-w: 20rem;
-  --slider-h: 23.75rem;
-
-  /* Nav */
-  --nav-top: 2.5rem;
-  --nav-right: 2vw;
-  --nav-fs: .85rem;
-  --nav-gap: .3rem;
-
-  /* Hero recursos */
-  --izq-left: 12vw;
-  --izq-bottom: 20vh;
-  --der-right: 9vw;
-  --der-top: 8vh;
-}
-
-
-/* =============================================
    FUENTES
    ============================================= */
 @font-face {
@@ -57,7 +9,6 @@
   font-display: swap;
 }
 
-
 /* =============================================
    BÁSICOS
    ============================================= */
@@ -67,12 +18,11 @@
 
 body {
   margin: 0;
-  font-family: var(--font-main);
-  color: var(--color-negro);
-  background: var(--color-blanco);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #000;
+  background: #fff;
   overflow-x: hidden;
 }
-
 
 /* =============================================
    HERO
@@ -82,9 +32,9 @@ body {
   width: 100%;
   min-height: 100vh;
   min-height: 100svh;
-  padding: var(--hero-py) var(--hero-px);
+  padding: 2rem 8vw;
   overflow: hidden;
-  background: var(--color-blanco);
+  background: #fff;
 }
 
 .hero-stage {
@@ -109,27 +59,26 @@ body {
 .hero-logo-text {
   margin: 0;
   font-family: "FutureBK", sans-serif;
-  font-size: clamp(4rem, 12vw, 14rem);
+  font-size: clamp(6rem, 14vw, 16rem);
   letter-spacing: .1rem;
   line-height: 1;
-  color: var(--color-negro);
+  color: #000;
   transition: color ease .5s;
 }
-.hero-logo-text:hover { color: var(--color-naranja); }
-
+.hero-logo-text:hover { color: #E57F12; }
 
 /* =============================================
    NAV (arriba derecha)
    ============================================= */
 .main-nav {
   position: absolute;
-  top: var(--nav-top);
-  right: var(--nav-right);
+  top: 2.5rem;
+  right: 2vw;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: var(--nav-gap);
-  font-size: var(--nav-fs);
+  gap: .3rem;
+  font-size: 1.2rem;
   transition: all ease .3s;
   z-index: 20;
 }
@@ -138,18 +87,18 @@ body {
   display: inline-flex;
   align-items: center;
   gap: .25rem;
-  color: var(--color-naranja);
+  color: #E57F12;
   text-decoration: none;
   white-space: nowrap;
 }
-.main-nav a:hover { color: var(--color-azul); }
+.main-nav a:hover { color: #9CCDCE; }
 
 .icono-links { display: inline-flex; align-items: center; }
 
 .icono-links img,
 .link-ver-mas-icono img {
-  width: var(--icon-size);
-  height: var(--icon-size);
+  width: 1rem;
+  height: 1rem;
 }
 
 .link-ver-mas-icono img { display: block; }
@@ -158,7 +107,6 @@ body {
 .icono-links .icono-links-hover  { display: none; }
 .main-nav a:hover .icono-links-normal { display: none; }
 .main-nav a:hover .icono-links-hover  { display: inline-block; }
-
 
 /* =============================================
    RECURSOS HERO
@@ -178,25 +126,26 @@ body {
 
 .hero-recurso-izq {
   position: absolute;
-  left: var(--izq-left);
-  bottom: var(--izq-bottom);
+  left: 8vw;
+  bottom: 16vh;
 }
-.hero-recurso-izq img { width: clamp(21.875rem, 25vw, 25rem); }
+.hero-recurso-izq img { width: clamp(25.875rem, 29vw, 29rem); }
 
 .hero-recurso-der {
   position: absolute;
-  right: var(--der-right);
-  top: var(--der-top);
+  right: 9vw;
+  top: 0vh;
 }
-.hero-recurso-der img { width: clamp(21.875rem, 20vw, 25rem); }
+.hero-recurso-der img { width: clamp(25.875rem, 24vw, 29rem); }
+
 
 
 /* =============================================
    LAYOUT COMÚN — ESPACIO, SERVICIOS, PRÓXIMAMENTE
    ============================================= */
 .section {
-  padding: var(--section-py) var(--section-px);
-  background: var(--color-blanco); /* Fondo general de secciones */
+  padding: 6rem 8vw;
+  background: #fff; /* Fondo general de secciones */
 }
 
 /* Contenedor interno centrado */
@@ -211,7 +160,6 @@ body {
   max-width: 70rem;          /* Evita que se ensanche infinito */
   margin: 0 auto;            /* Lo centra en pantalla */
 }
-
 
 /* =============================================
    ESPACIO
@@ -238,7 +186,6 @@ body {
   object-fit: contain;
 }
 
-
 /* =============================================
    SERVICIOS
    ============================================= */
@@ -259,17 +206,16 @@ body {
   cursor: default;
 }
 
-
 /* Títulos compartidos */
 .section-espacio-text h2,
 .section-servicios-titulo h2 {
-  color: var(--color-naranja);
-  font-size: var(--h2-size);
-  font-weight: var(--h2-weight);
+  color: #E57F12;
+  font-size: 2.4rem;
+  font-weight: 600;
   text-transform: uppercase;
   text-decoration: underline;
-  text-decoration-thickness: var(--underline-thick);
-  text-underline-offset: var(--underline-offset);
+  text-decoration-thickness: .1875rem;
+  text-underline-offset: .375rem;
 }
 .section-espacio-text h2     { margin: 0 0 1.5rem; }
 .section-servicios-titulo h2 { margin: 0; }
@@ -278,10 +224,9 @@ body {
 .section-espacio-text p,
 .section-servicios-text p {
   margin: 0 0 .8rem;
-  line-height: var(--p-lh);
-  font-size: var(--p-size);
+  line-height: 1.5;
+  font-size: .95rem;
 }
-
 
 /* =============================================
    VER MÁS
@@ -294,9 +239,8 @@ body {
   font-size: .8rem;
 }
 .link-ver-mas a { text-decoration: none; color: inherit; }
-.link-ver-mas-texto { color: var(--color-naranja); }
+.link-ver-mas-texto { color: #E57F12; }
 .link-ver-mas-texto:hover { text-decoration: underline; }
-
 
 /* =============================================
    PRÓXIMAMENTE
@@ -313,27 +257,26 @@ body {
 .proximamente-slider {
   position: relative;
   width: 100%;
-  max-width: var(--slider-w);
-  height: var(--slider-h);
+  max-width: 20rem;
+  height: 23.75rem;
 }
 
 .slider-frame {
   position: absolute;
   inset: 0;
-  border: var(--frame-b) solid var(--color-naranja);
+  border: .1875rem solid #E57F12;
   background: transparent;
   z-index: 1;
-  transform: translate(var(--t, 0), var(--t, 0));
 }
-.slider-frame--1 { --t: 1rem; }
-.slider-frame--2 { --t: 2rem; }
+.slider-frame--1 { transform: translate(1rem, 1rem); }
+.slider-frame--2 { transform: translate(2rem, 2rem); }
 
 .proximamente-track {
   position: absolute;
   inset: 0;
   z-index: 2;
   overflow: hidden;
-  background: var(--color-blanco);
+  background: #fff;
 }
 
 .slide {
@@ -381,7 +324,7 @@ body {
 
 .proximamente-content h2 {
   text-transform: lowercase;
-  color: var(--color-naranja);
+  color: #E57F12;
   font-size: 2rem;
   margin: 0 0 1.5rem;
   cursor: default;
@@ -397,15 +340,15 @@ body {
 
 .proximamente-lista { list-style: none; padding: 0; margin: 0; }
 .proximamente-lista li { margin-bottom: .5rem; }
-.proximamente-lista a { color: var(--color-negro); text-decoration: underline; }
+.proximamente-lista a { color: #000; text-decoration: underline; }
 
 /* =============================================
    FOOTER
    ============================================= */
 .footer-top {
-  background: var(--color-azul);
-  color: var(--color-negro);
-  padding:3rem;
+  background: #9CCDCE;
+  color: #000;
+  padding: 3rem;
 }
 
 .footer-top-inner {
@@ -426,7 +369,7 @@ body {
 }
 .footer-nav a {
   text-decoration: none;
-  color: var(--color-negro);
+  color: #000;
   text-transform: lowercase;
 }
 
@@ -440,9 +383,7 @@ body {
   font-size: .8rem;
   margin: 0 auto;
 }
-.footer-legal a { text-decoration: none; color: var(--color-negro); }
-
-
+.footer-legal a { text-decoration: none; color: #000; }
 
 /* =============================================
    RESPONSIVE
@@ -455,24 +396,37 @@ body {
 }
 
 @media (max-width: 1024px) {
-  :root {
-    --section-px: 6vw;
-    --hero-px: 6vw;
-    --izq-left: 8vw;
-    --der-right: 6vw;
+  /* Sustituimos variables por clases directas */
+  .section {
+    padding: 6rem 6vw;
+  }
+  .hero {
+    padding: 2rem 6vw;
+  }
+  .hero-recurso-izq {
+    left: 8vw;
+  }
+  .hero-recurso-der {
+    right: 6vw;
   }
 }
 
 @media (max-width: 768px) {
-  :root {
-    --section-py: 4rem;
-    --hero-py: 1.5rem;
-    --nav-top: 1.25rem;
-    --nav-right: 4vw;
-    --slider-w: min(20rem, 82vw);
-    --slider-h: clamp(18rem, 95vw, 23.75rem);
+  /* Mantienen el padding lateral de 6vw que heredan del de 1024px */
+  .section {
+    padding: 4rem 6vw;
   }
-
+  .hero {
+    padding: 1.5rem 6vw;
+  }
+  .main-nav {
+    top: 1.25rem;
+    right: 4vw;
+  }
+  .proximamente-slider {
+    max-width: min(20rem, 82vw);
+    height: clamp(18rem, 95vw, 23.75rem);
+  }
   .section-espacio-text,
   .section-servicios-text,
   .proximamente-content {
@@ -483,16 +437,54 @@ body {
   .section-servicios-titulo {
     justify-content: flex-start;
   }
+
+  /*Hero en moviles normales*/
+  .hero-recursos {
+  position: absolute;
+}
+
+.hero-recurso img {
+  display: block;
+  max-width: 100%;
+  height: 100%;
+}
+
+.hero-recurso-izq {
+  position: absolute;
+  top: -15vh;
+  left: 1vh;
+}
+.hero-recurso-izq img { width: clamp(15rem, 20vw, 20rem); }
+
+.hero-recurso-der {
+  display: none;
+}
+.hero-recurso-der img { width: clamp(25.875rem, 24vw, 29rem); }
 }
 
 @media (max-width: 480px) {
-  :root {
-    --section-px: 5vw;
-    --nav-fs: .8rem;
-    --icon-size: .75rem;
-    --izq-bottom: 12vh;
-    --der-top: 4vh;
+  /* Mantienen el padding vertical de 4rem de 768px, pero estrechan el lateral a 5vw */
+  .section {
+    padding: 4rem 5vw;
   }
-
-  .proximamente-arrow { font-size: 1.8rem; }
+  .hero {
+    padding: 1.5rem 5vw;
+  }
+  .main-nav {
+    font-size: .8rem;
+  }
+  .icono-links img,
+  .link-ver-mas-icono img {
+    width: .75rem;
+    height: .75rem;
+  }
+  .hero-recurso-izq {
+    bottom: 12vh;
+  }
+  .hero-recurso-der {
+    top: 4vh;
+  }
+  .proximamente-arrow { 
+    font-size: 1.8rem; 
+  }
 }
