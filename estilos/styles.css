@@ -252,7 +252,7 @@ body {
    PRÓXIMAMENTE
    ============================================= */
 .proximamente-media {
-  flex: 1 1 30rem;
+  flex: 1 1 35rem;
   position: relative;
   display: flex;
   justify-content: center;
@@ -373,6 +373,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: .3rem;
+  font-size: 1rem;
 }
 .footer-nav a {
   text-decoration: none;
@@ -380,14 +381,14 @@ body {
   text-transform: lowercase;
 }
 
-.footer-contact p { margin: .3rem 0; }
+.footer-contact p { margin: .3rem 0; font-size: 1rem; }
 
 .footer-legal {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
-  font-size: .8rem;
+  font-size: 1rem;
   margin: 0 auto;
 }
 .footer-legal a { text-decoration: none; color: #000; }
