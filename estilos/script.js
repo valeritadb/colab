@@ -1,47 +1,61 @@
-// Carrusel de la sección "próximamente"
+/* ============================================================
+   COLAB — script principal
+   ============================================================ */
+
 document.addEventListener('DOMContentLoaded', () => {
-  const slides = document.querySelectorAll('.proximamente-track .slide');
-  const btnPrev = document.getElementById('prevSlide');
-  const btnNext = document.getElementById('nextSlide');
 
-  // seguridad básica
-  if (!slides.length || !btnPrev || !btnNext) return;
+    /* ── Año dinámico en el footer ── */
+    const yearEl = document.querySelector('.year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  let currentIndex = 0;
-  const totalSlides = slides.length;
 
-  function showSlide(newIndex, direction = 1) {
-    const oldSlide = slides[currentIndex];
+    /* ── Carrusel de la sección "próximamente" ── */
+    const slides = document.querySelectorAll('.proximamente-track .slide');
+    const btnPrev = document.getElementById('prevSlide');
+    const btnNext = document.getElementById('nextSlide');
 
-    // quitar activa del slide actual
-    oldSlide.classList.remove('slide--active');
-    oldSlide.style.opacity = '0';
+    if (slides.length && btnPrev && btnNext) {
+        let current = 0;
+        const total = slides.length;
 
-    // índice nuevo INFINITO:
-    // - siguiente desde el último → vuelve a 0
-    // - anterior desde el primero → va al último
-    currentIndex = (newIndex + totalSlides) % totalSlides;
-    const nextSlide = slides[currentIndex];
+        function goTo(newIndex, direction) {
+            const outgoing = slides[current];
+            outgoing.classList.remove('slide--active');
+            outgoing.style.opacity = '0';
+            outgoing.style.transform = `translateX(${-30 * direction}px)`;
 
-    // posición inicial de entrada según la dirección
-    nextSlide.style.transform = `translateX(${30 * direction}px)`;
-    nextSlide.style.opacity = '0';
+            current = ((newIndex % total) + total) % total;
+            const incoming = slides[current];
 
-    // en el siguiente frame activamos la transición
-    requestAnimationFrame(() => {
-      nextSlide.classList.add('slide--active');
-      nextSlide.style.transform = 'translateX(0)';
-      nextSlide.style.opacity = '1';
+            // Posición inicial de entrada
+            incoming.style.transition = 'none';
+            incoming.style.opacity = '0';
+            incoming.style.transform = `translateX(${30 * direction}px)`;
+
+            // Forzar reflow para que la transición se aplique
+            incoming.getBoundingClientRect();
+
+            incoming.style.transition = '';
+            incoming.classList.add('slide--active');
+            incoming.style.transform = 'translateX(0)';
+            incoming.style.opacity = '1';
+        }
+
+        btnNext.addEventListener('click', () => goTo(current + 1, 1));
+        btnPrev.addEventListener('click', () => goTo(current - 1, -1));
+    }
+
+
+    /* ── Smooth scroll para los enlaces del nav ── */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href.length < 2) return; // saltar href="#"
+            const target = document.querySelector(href);
+            if (!target) return;
+            e.preventDefault();
+            target.scrollIntoView({behavior: 'smooth', block: 'start'});
+        });
     });
-  }
 
-  btnNext.addEventListener('click', () => {
-    showSlide(currentIndex + 1, 1);   // siguiente
-  });
-
-  btnPrev.addEventListener('click', () => {
-    showSlide(currentIndex - 1, -1);  // anterior
-  });
 });
-
-
