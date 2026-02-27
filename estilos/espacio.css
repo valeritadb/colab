@@ -113,7 +113,7 @@ main {
 
 /* Título naranja subrayado, tipografía display grande */
 .esp-titulo {
-    font-family: var(--font-display);
+    /*font-family: var(--font-display);*/
     font-size: clamp(2.5rem, 5.5vw, 5.5rem);
     font-weight: 400;
     line-height: 1;
@@ -388,7 +388,7 @@ main {
 /* Título solapado: fondo blanco + desplazamiento negativo
    para que entre visualmente sobre la foto */
 .esp-subtitulo {
-    font-family: var(--font-display);
+    /*font-family: var(--font-display);*/
     font-size: clamp(1.6rem, 3.2vw, 3.5rem);
     font-weight: 400;
     line-height: 1.05;
@@ -497,7 +497,7 @@ main {
 /* Primera línea: "SALAS PARA" — ligeramente más pequeña */
 #salas-grupos .esp-subtitulo .linea1 {
     display: block;
-    font-family: var(--font-display);
+    /*font-family: var(--font-display);*/
     font-size: 0.78em;
     color: var(--c-naranja);
     padding-left: 0.1em;
@@ -506,7 +506,7 @@ main {
 /* Segunda línea: "GRUPOS" — más grande, fondo blanco tapa la foto */
 #salas-grupos .esp-subtitulo .linea2 {
     display: block;
-    font-family: var(--font-display);
+    /*font-family: var(--font-display);*/
     font-size: 1em;
     color: var(--c-naranja);
     background: var(--c-blanco);
