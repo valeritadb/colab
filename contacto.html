@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="COLAB — Contacto. Encuéntranos en C/ miaumiaumiau o déjanos tu mensaje.">
+    <link rel="preload" href="./estilos/fonts/Futurebk.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="estilos/styles.css">
+    <link rel="stylesheet" href="estilos/espacio.css">
+    <link rel="stylesheet" href="estilos/contacto.css">
+    <title>Contacto — COLAB</title>
+</head>
+<body>
+
+<header class="esp-header">
+    <a href="index.html" class="esp-logo" aria-label="COLAB — volver al inicio">
+        <span class="esp-logo-co">CO</span>
+        <span class="esp-logo-lab">LAB</span>
+    </a>
+    <nav class="main-nav" aria-label="Navegación principal">
+        <a href="espacio.html">
+            espacio
+            <span class="icono-links" aria-hidden="true">
+                <img class="icono-links-normal" src="multi/asterisconaranja.svg" alt="">
+                <img class="icono-links-hover" src="multi/azul_def_asterisco.svg" alt="">
+            </span>
+        </a>
+        <a href="index.html#servicios">
+            servicios
+            <span class="icono-links" aria-hidden="true">
+                <img class="icono-links-normal" src="multi/asterisconaranja.svg" alt="">
+                <img class="icono-links-hover" src="multi/azul_def_asterisco.svg" alt="">
+            </span>
+        </a>
+        <a href="contacto.html">
+            contacto
+            <span class="icono-links" aria-hidden="true">
+                <img class="icono-links-normal" src="multi/asterisconaranja.svg" alt="">
+                <img class="icono-links-hover" src="multi/azul_def_asterisco.svg" alt="">
+            </span>
+        </a>
+    </nav>
+</header>
+
+<main>
+    <section class="cnt-section">
+        <div class="cnt-wrap">
+
+            <!-- GRID: izquierda (título+texto+ig) / derecha (formulario) -->
+            <div class="cnt-top">
+
+                <!-- Columna izquierda -->
+                <div class="cnt-col-izq">
+                    <h1 class="cnt-titulo">CONTACTO</h1>
+                    <div class="cnt-texto">
+                        <p>Nos puedes encontrar en<br>C/miaumiaumiau</p>
+                        <p>O puedes dejarnos un mensaje con cualquier consulta y te contestaremos en la mayor brevedad
+                            posible.</p>
+                    </div>
+                </div>
+
+                <!-- Columna derecha: formulario -->
+                <div class="cnt-col-der">
+                    <div class="cnt-field">
+                        <label for="cnt-nombre">Nombre</label>
+                        <input type="text" id="cnt-nombre" name="nombre" autocomplete="name">
+                    </div>
+                    <div class="cnt-field">
+                        <label for="cnt-email">Correo electrónico</label>
+                        <input type="email" id="cnt-email" name="email" autocomplete="email">
+                    </div>
+                    <div class="cnt-field">
+                        <label for="cnt-mensaje">Mensaje</label>
+                        <textarea id="cnt-mensaje" name="mensaje" rows="8"></textarea>
+                    </div>
+                    <div class="cnt-submit">
+                        <button type="button" class="btn-reserva cnt-btn">Enviar</button>
+                    </div>
+                </div>
+
+            </div><!-- /cnt-top -->
+
+            <!-- Parte inferior: instagram + mapa -->
+            <div class="cnt-bottom">
+                <a href="https://instagram.com/coworking.laboratory"
+                   class="cnt-ig"
+                   target="_blank" rel="noopener noreferrer"
+                   aria-label="Instagram de COLAB">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+                         aria-hidden="true">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+                    </svg>
+                    coworking.laboratory
+                </a>
+                <div class="cnt-mapa-row">
+                    <div class="cnt-mapa">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24455.50580723218!2d-0.08703135761020502!3d39.98748580743531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5ffe2bb82bc197%3A0xbf89204be1c64f49!2sCastell%C3%B3n%20de%20la%20Plana%2C%20Castell%C3%B3n!5e0!3m2!1ses!2ses!4v1772310311421!5m2!1ses!2ses"
+                                allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Localización de COLAB en Google Maps"></iframe>
+                    </div>
+                    <div class="cnt-mapa-label" aria-hidden="true">
+                        <span class="cnt-mapa-flecha">→</span>
+                        <span class="cnt-mapa-texto">¡Estamos aquí!</span>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /cnt-wrap -->
+    </section>
+</main>
+
+<footer id="contacto" class="section footer-top">
+    <div class="footer-top-inner">
+        <nav class="footer-nav" aria-label="Navegación footer">
+            <a href="espacio.html">espacio</a>
+            <a href="index.html#servicios">servicios</a>
+            <a href="contacto.html">contacto</a>
+        </nav>
+        <div class="footer-contact">
+            <p>encuéntranos en<br>C/ miaumiaumiau</p>
+            <a href="#"
+               class="footer-instagram"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Instagram de COLAB">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+                     aria-hidden="true">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+                </svg>
+                coworking.laboratory
+            </a>
+        </div>
+    </div>
+    <div class="footer-legal">
+        <a href="#">aviso legal</a>
+        <a href="#">términos y condiciones</a>
+        <a href="#">política de cookies</a>
+        <p class="footer-copyright">© <span class="year"></span> COLAB by Prodesco. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script src="estilos/script.js"></script>
+</body>
+</html>
