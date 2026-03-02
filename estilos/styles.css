@@ -317,7 +317,7 @@ body {
 }
 
 .proximamente-arrow-right { 
-  right: -1rem; 
+  right: 0rem; 
 }
 .proximamente-content {
   flex: 1 1 20rem;
