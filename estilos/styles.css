@@ -1,564 +1,752 @@
-/* =============================================
-   FUENTES
-   ============================================= */
-@font-face {
-  font-family: "FutureBK";
-  src: url(/estilos/fonts/Futurebk.ttf) format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+/* *********************************************************
+   VARIABLES
+   Cambiar un valor aquí lo actualiza en toda la web.
+   ********************************************************* */
+:root {
+    /* Colores principales */
+    --c-naranja: #E57F12;
+    --c-azul: #9CCDCE;
+    --c-negro: #000000;
+    --c-blanco: #ffffff;
+
+    /* Tipografía */
+    --font-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-display: "FutureBK", sans-serif;
+
+    /* Espaciado de secciones
+       clamp(mínimo, preferido, máximo)
+       El valor preferido en vw hace que escale suavemente con la pantalla */
+    --section-pad-v: clamp(4rem, 8vw, 9rem);
+    --section-pad-h: clamp(1.5rem, 4vw, 6vw);
+
+    /* Gap entre columnas dentro de las secciones */
+    --section-gap: clamp(2rem, 5vw, 5rem);
+
+    /* Punto de ruptura en el que las columnas se apilan.
+       Cuando cada columna no puede tener 28rem de ancho, se apilan solas.
+       Cambiar este valor ajusta cuándo ocurre el cambio de layout. */
+    --col-break: 28rem;
+
+    /* Transiciones */
+    --trans: 0.35s ease;
+    --trans-fast: 0.2s ease;
 }
 
-/* =============================================
-   BÁSICOS
-   ============================================= */
-*,
-*::before,
-*::after { box-sizing: border-box; }
+
+/* *********************************************************
+   FUENTES
+   ********************************************************* */
+@font-face {
+    font-family: "FutureBK";
+    src: url("fonts/Futurebk.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* *********************************************************
+   RESET / BASE
+   ********************************************************* */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
 
 body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #000;
-  background: #fff;
-  overflow-x: hidden;
+    font-family: var(--font-base);
+    color: var(--c-negro);
+    background: var(--c-blanco);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* =============================================
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+
+/* *********************************************************
+   SCROLLBAR
+   Funciona en Chrome/Edge/Safari. Firefox usa scrollbar-color.
+   ********************************************************* */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--c-blanco);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--c-naranja);
+    border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--c-azul);
+}
+
+/* * Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--c-naranja) var(--c-blanco);
+}
+
+/* *********************************************************
    HERO
-   ============================================= */
+   ********************************************************* */
+
+/* * Contenedor principal: ocupa toda la pantalla y centra el stage */
 .hero {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  min-height: 100svh;
-  padding: 2rem 8vw;
-  overflow: hidden;
-  background: #fff;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    background: var(--c-blanco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
+/* * Stage: define el tamaño del conjunto texto + ilustraciones.
+     aspect-ratio forzado al contenido visual real (no al viewBox completo)
+     para que no haya espacio vacío arriba/abajo.
+     Las ilustraciones sobresalen con overflow: visible. */
 .hero-stage {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: min(90vw, calc(90vh * (1400 / 690)));
+    aspect-ratio: 1400 / 690;
+    position: relative;
+    overflow: visible;
 }
 
-.hero-logo {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: default;
-  z-index: 10;
+/* * SVG: ocupa todo el stage.
+     height: 100% + position absolute para que no añada altura de layout.
+     overflow: visible para que gato y hombre sobresalgan del stage. */
+.hero-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: visible;
 }
 
-.hero-logo-text {
-  margin: 0;
-  font-family: "FutureBK", sans-serif;
-  font-size: clamp(6rem, 14vw, 16rem);
-  letter-spacing: .1rem;
-  line-height: 1;
-  color: #000;
-  transition: color ease .5s;
+/* * Las ilustraciones no capturan eventos del ratón */
+.hero-svg image {
+    pointer-events: none;
 }
-.hero-logo-text:hover { color: #E57F12; }
 
-/* =============================================
-   NAV (arriba derecha)
-   ============================================= */
+/* * Hover solo sobre el texto COLAB */
+.hero-svg-text {
+    transition: fill var(--trans);
+    cursor: default;
+    pointer-events: all;
+}
+
+.hero-svg-text:hover {
+    fill: var(--c-naranja);
+}
+
+
+/* * Nav arriba derecha */
 .main-nav {
-  position: absolute;
-  top: 2.5rem;
-  right: 2vw;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: .3rem;
-  font-size: 1.2rem;
-  transition: all ease .3s;
-  z-index: 20;
+    position: absolute;
+    top: clamp(1.25rem, 2.5vw, 2.5rem);
+    right: clamp(1rem, 2.5vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.3rem;
+    font-size: clamp(0.85rem, 1.4vw, 1.2rem);
+    z-index: 20;
+}
+
+/* Nav del index: fixed, idéntico al esp-header de espacio.html
+   esp-header: padding clamp(0.6rem,1.4vw,1.1rem) clamp(1.5rem,4vw,5vw)
+   align-items:center en el flex parent centra verticalmente */
+.hero .main-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    /* Misma altura que esp-header */
+    min-height: clamp(4rem, 7vw, 6.5rem);
+    /* Mismo padding lateral que esp-header */
+    padding-right: clamp(1.5rem, 4vw, 5vw);
+    /* Padding vertical igual al esp-header para centrar igual */
+    padding-top: clamp(0.6rem, 1.4vw, 1.1rem);
+    padding-bottom: clamp(0.6rem, 1.4vw, 1.1rem);
+    /* Centrar los enlaces en el eje vertical del contenedor */
+    justify-content: center;
 }
 
 .main-nav a {
-  display: inline-flex;
-  align-items: center;
-  gap: .25rem;
-  color: #E57F12;
-  text-decoration: none;
-  white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--c-naranja);
+    white-space: nowrap;
+    transition: color var(--trans-fast);
 }
-.main-nav a:hover { color: #9CCDCE; }
 
-.icono-links { display: inline-flex; align-items: center; }
+.main-nav a:hover {
+    color: var(--c-azul);
+}
+
+/* * Iconos asterisco del nav: naranja en reposo, azul en hover */
+.icono-links {
+    display: inline-flex;
+    align-items: center;
+}
 
 .icono-links img,
 .link-ver-mas-icono img {
-  width: 1rem;
-  height: 1rem;
+    width: 1em;
+    height: 1em;
 }
 
-.link-ver-mas-icono img { display: block; }
-
-.icono-links .icono-links-normal { display: inline-block; }
-.icono-links .icono-links-hover  { display: none; }
-.main-nav a:hover .icono-links-normal { display: none; }
-.main-nav a:hover .icono-links-hover  { display: inline-block; }
-
-/* =============================================
-   RECURSOS HERO
-   ============================================= */
-.hero-recursos {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 5;
+.icono-links .icono-links-normal {
+    display: inline-block;
 }
 
-.hero-recurso img {
-  display: block;
-  max-width: 100%;
-  height: auto;
+.icono-links .icono-links-hover {
+    display: none;
 }
 
-.hero-recurso-izq {
-  position: absolute;
-  left: 8vw;
-  bottom: 16vh;
+.main-nav a:hover .icono-links-normal {
+    display: none;
 }
-.hero-recurso-izq img { width: clamp(25.875rem, 29vw, 29rem); }
 
-.hero-recurso-der {
-  position: absolute;
-  right: 9vw;
-  top: 0vh;
+.main-nav a:hover .icono-links-hover {
+    display: inline-block;
 }
-.hero-recurso-der img { width: clamp(25.875rem, 24vw, 29rem); }
 
 
+/* *********************************************************
+   SECCIONES — layout base compartido
+   ********************************************************* */
 
-/* =============================================
-   LAYOUT COMÚN — ESPACIO, SERVICIOS, PRÓXIMAMENTE
-   ============================================= */
+/* * Padding vertical y horizontal que escala suavemente con la pantalla */
 .section {
-  /* dar más aire vertical y horizontal a las secciones grandes */
-  padding: 10rem 12vw;
+    padding: var(--section-pad-v) var(--section-pad-h);
 }
 
-/* Contenedor interno centrado */
-.section-espacio-intro,
-.section-servicios-intro,
-.section-proximamente {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4rem;
-  align-items: center;
-  justify-content: center;
-  /* ampliar ancho máximo para ocupar más horizontalmente en escritorio */
-  max-width: 90rem;          /* Evita que se ensanche infinito */
-  margin: 0 auto;            /* Lo centra en pantalla */
+/* * Contenedor interno: dos columnas en escritorio, una en móvil.
+     flex-wrap hace que las columnas se apilen solas cuando no caben. */
+.section-inner {
+    max-width: 72rem;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--section-gap);
+    align-items: center;
+    justify-content: center;
 }
 
-.section-servicios-intro {
-  min-height: 30rem;            /* aumentar para equiparar con nueva altura de imagen */
-  align-items: stretch;         /* columnas llenan toda la altura */
+/* * Columna de texto: flex-basis var(--col-break) hace que en escritorio
+     ocupe la mitad y en móvil ocupe todo el ancho automáticamente.
+     min-width: 0 evita desbordamiento con contenido largo. */
+.col-texto {
+    flex: 1 1 var(--col-break);
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: default;
 }
 
-/* =============================================
-   ESPACIO
-   ============================================= */
-.section-espacio-text {
-  flex: 1 1 20rem;
-  max-width: 28rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  cursor: default;
-}
-
-.section-espacio-recurso {
-  flex: 1 1 20rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.section-espacio-recurso img {
-  max-width: 100%;
-  max-height: 30rem;   /* imagen más grande para escalar la sección */
-  object-fit: contain;
-}
-
-/* =============================================
-   SERVICIOS
-   ============================================= */
-.section-servicios-titulo {
-  flex: 1 1 20rem;
-  display: flex;
-  justify-content: left;     
-  align-items: center;         
-  cursor: default;
-}
-
-.section-servicios-text {
-  flex: 1 1 20rem;
-  max-width: 28rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  cursor: default;
-}
-
-/* Títulos compartidos */
-.section-espacio-text h2,
-.section-servicios-titulo h2 {
-  color: #E57F12;
-  font-size: 4rem;           
-  font-weight: 600;
-  text-transform: uppercase;
-  text-decoration: underline;
-  text-decoration-thickness: .1875rem;
-  text-underline-offset: .375rem;
-}
-.section-espacio-text h2     { margin: 0 0 1.5rem; }
-.section-servicios-titulo h2 { margin: 0; }
-
-/* Párrafos compartidos */
-.section-espacio-text p,
-.section-servicios-text p {
-  margin: 0 0 0.8rem;
-  line-height: 1.5;
-  font-size: 1rem;
-}
-
-/* =============================================
-   VER MÁS
-   ============================================= */
-.link-ver-mas {
-  display: inline-flex;
-  align-items: center;
-  gap: .3rem;
-  margin-top: 1rem;
-  font-size: 1rem;
-}
-.link-ver-mas a { text-decoration: none; color: inherit; }
-.link-ver-mas-texto { color: #E57F12; }
-.link-ver-mas-texto:hover { text-decoration: underline; }
-
-/* =============================================
-   PRÓXIMAMENTE
-   ============================================= */
-.proximamente-media {
-  flex: 1 1 35rem;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 4.5rem; 
-}
-
-.proximamente-slider {
-  position: relative;
-  width: 100%;
-  max-width: 20rem;
-  height: 23.75rem;
-}
-
-.slider-frame {
-  position: absolute;
-  inset: 0;
-  border: .1875rem solid #E57F12;
-  background: transparent;
-  z-index: 1;
-}
-.slider-frame--1 { transform: translate(1rem, 1rem); }
-.slider-frame--2 { transform: translate(2rem, 2rem); }
-
-.proximamente-track {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  overflow: hidden;
-  background: #fff;
-}
-
-.slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transform: translateX(2rem);
-  transition: opacity .4s ease, transform .4s ease;
-}
-.slide--active { opacity: 1; transform: translateX(0); }
-
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.proximamente-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: 0;
-  background: none;
-  font-size: 2.5rem; 
-  cursor: pointer;
-  z-index: 10;
-}
-
-.proximamente-arrow-left  { 
-  left: 0.5rem; 
-}
-
-.proximamente-arrow-right { 
-  right: 0rem; 
-}
-.proximamente-content {
-  flex: 1 1 20rem;
-  max-width: 25rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.proximamente-content h2 {
-  text-transform: lowercase;
-  color: #E57F12;
-  font-size: 3rem;
-  margin: 0 0 1.5rem;
-  cursor: default;
-}
-
-.proximamente-content p {
-  max-width: 22.5rem;
-  margin: 0 0 1.5rem;
-  cursor: default;
-  font-size: 1.1rem;
-}
-
-.proximamente-down-arrow { font-size: 4rem; margin: .5rem 0 1.5rem; }
-
-.proximamente-lista { list-style: none; padding: 0; margin: 0; font-size: 1rem;}
-.proximamente-lista li { margin-bottom: .5rem; }
-.proximamente-lista a { color: #000; text-decoration: underline; }
-
-/* =============================================
-   FOOTER
-   ============================================= */
-.footer-top {
-  background: #9CCDCE;
-  color: #000;
-  padding: 3rem;
-}
-
-.footer-top-inner {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  margin-bottom: 2.5rem; 
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.footer-nav {
-  display: flex;
-  flex-direction: column;
-  gap: .3rem;
-  font-size: 1rem;
-}
-.footer-nav a {
-  text-decoration: none;
-  color: #000;
-  text-transform: lowercase;
-}
-
-.footer-contact p { margin: .3rem 0; font-size: 1rem; }
-
-.footer-legal {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-  font-size: 1rem;
-  margin: 0 auto;
-}
-.footer-legal a { text-decoration: none; color: #000; }
-
-/* =============================================
-   RESPONSIVE
-   ============================================= */
-
-@media (min-width: 1025px) {
-  .section-servicios-titulo {
-    padding-right: 2rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  /* Sustituimos variables por clases directas */
-  .section {
-    padding: 6rem 6vw;
-  }
-  /* volver a un ancho razonable en tablet y móviles grandes */
-  .section-espacio-intro,
-  .section-servicios-intro,
-  .section-proximamente {
-    max-width: 70rem;
-  }
-  .hero {
-    padding: 2rem 6vw;
-  }
-  /* mantengo las posiciones originales de los recursos para que no se muevan */
-}
-
-@media (max-width: 768px) {
-  /* Mantienen el padding lateral de 6vw que heredan del de 1024px */
-  .section {
-    padding: 4rem 6vw;
-  }
-  
-  /* ========================================
-     HERO — MODO ZOOM PROPORCIONAL EN MÓVILES
-     Solo el contenedor cambia de tamaño;
-     todos los elementos mantienen posición relativa.
-     ======================================== */
-  .hero {
-    /* el contenedor escala proporcionalmente con el ancho de la pantalla */
-    width: 100vw;
-    height: auto;
-    aspect-ratio: 1 / 1.3;  /* proporción base móvil: 375px x ~485px */
-    padding: 0;
-    overflow: visible;
-    margin-left: calc(-50vw + 50%);
-  }
-  
-  .hero-stage {
-    /* contenedor interno también con la misma proporción */
-    width: 100%;
-    height: 100%;
-    min-height: auto;
-    position: relative;
-  }
-  
-  /* logo centrado, tamaño relativo al ancho de la pantalla */
-  .hero-logo {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+/* * Columna de imagen: mismo comportamiento que col-texto */
+.col-imagen {
+    flex: 1 1 var(--col-break);
+    min-width: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .hero-logo-text {
-    /* tamaño del texto basado en vw para escalar con la pantalla */
-    font-size: 16vw;
-    margin: 0;
-  }
-  
-  /* contenedor de recursos: cubre todo el espacio, posición absoluta */
-  .hero-recursos {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    inset: 0;
-    pointer-events: none;
-    z-index: 5;
-  }
-  
-  /* ilustración izquierda */
-  .hero-recurso-izq {
-    position: absolute;
-    left: 8%;
-    bottom: 12%;
-    width: 30vw;
-    height: auto;
-  }
-  
-  .hero-recurso-izq img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  /* ilustración derecha */
-  .hero-recurso-der {
-    position: absolute;
-    right: 5%;
-    top: 8%;
-    width: 28vw;
-    height: auto;
-  }
-  
-  .hero-recurso-der img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  /* menú de navegación: posición relativa al contenedor del hero */
-  .main-nav {
-    position: absolute;
-    top: 2.5%;
-    right: 3%;
-    font-size: 3.2vw;
-  }
-  
-  .proximamente-slider {
-    max-width: min(20rem, 82vw);
-    height: clamp(18rem, 95vw, 23.75rem);
-  }
-  
-  .section-espacio-text,
-  .section-servicios-text,
-  .proximamente-content {
-    max-width: 100%;
-  }
-
-  /* apilar el slider debajo del texto en móviles */
-  .section-proximamente {
-    flex-direction: column-reverse;
-    align-items: center;
-  }
-  
-  .proximamente-media,
-  .proximamente-content {
-    width: 100%;
-  }
-
-  /* Alineación natural en móvil */
-  .section-servicios-titulo {
-    justify-content: flex-start;
-  }
 }
 
+/* * Título naranja subrayado — escala entre móvil y escritorio */
+.titulo-seccion {
+    color: var(--c-naranja);
+    font-size: clamp(2rem, 4.5vw, 4.5rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-decoration-thickness: 0.15rem;
+    text-underline-offset: 0.4rem;
+    margin: 0 0 clamp(1rem, 2.5vw, 1.75rem);
+    line-height: 1;
+}
+
+/* * Párrafos: mínimo legible en móvil, máximo cómodo en escritorio */
+.col-texto p {
+    margin: 0 0 clamp(0.6rem, 1.5vw, 1rem);
+    line-height: 1.65;
+    font-size: clamp(1rem, 1.15vw, 1.1rem);
+}
+
+/* * Enlace "ver más" con icono asterisco */
+.link-ver-mas {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: clamp(0.75rem, 2vw, 1.25rem);
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+}
+
+.link-ver-mas a {
+    color: inherit;
+}
+
+.link-ver-mas-texto {
+    color: var(--c-naranja);
+    transition: text-decoration var(--trans-fast);
+}
+
+.link-ver-mas-texto:hover {
+    text-decoration: underline;
+}
+
+
+/* *********************************************************
+   SECCION ESPACIO
+   ********************************************************* */
+
+/* * La ilustración escala con la pantalla sin deformarse */
+.section-espacio .col-imagen img {
+    width: 100%;
+    max-width: clamp(18rem, 40vw, 34rem);
+    height: auto;
+    object-fit: contain;
+}
+
+
+/* *********************************************************
+   SECCION SERVICIOS
+   ********************************************************* */
+
+/* * En escritorio: título izquierda y texto derecha a la misma altura */
+.section-servicios .section-inner {
+    align-items: stretch;
+}
+
+/* * Columna del título grande */
+.col-titulo-grande {
+    flex: 1 1 var(--col-break);
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* * En servicios el título puede ser más grande y no lleva margin-bottom */
+.col-titulo-grande .titulo-seccion {
+    margin: 0;
+    font-size: clamp(2.5rem, 5.5vw, 5.5rem);
+}
+
+
+/* *********************************************************
+   SECCION PROXIMAMENTE
+   ********************************************************* */
+.section-proximamente .section-inner {
+    align-items: center;
+}
+
+/* * Columna del slider: espacio lateral para las flechas */
+.proximamente-media {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 clamp(2rem, 4vw, 3.5rem);
+    flex: 1 1 var(--col-break);
+    min-width: 0;
+}
+
+/* * El slider escala con la pantalla pero mantiene su proporción */
+.proximamente-slider {
+    position: relative;
+    width: 100%;
+    max-width: clamp(16rem, 38vw, 22rem);
+    aspect-ratio: 320 / 380;
+}
+
+/* * Marcos naranjas: los offsets escalan para no sobresalir en móvil */
+.slider-frame {
+    position: absolute;
+    inset: 0;
+    border: 0.1875rem solid var(--c-naranja);
+    background: transparent;
+    z-index: 1;
+}
+
+.slider-frame--1 {
+    transform: translate(clamp(0.4rem, 1vw, 0.75rem), clamp(0.4rem, 1vw, 0.75rem));
+}
+
+.slider-frame--2 {
+    transform: translate(clamp(0.8rem, 2vw, 1.5rem), clamp(0.8rem, 2vw, 1.5rem));
+}
+
+/* * Track: contenedor de los slides */
+.proximamente-track {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    overflow: hidden;
+    background: var(--c-blanco);
+}
+
+/* * Slide: inactivo por defecto, visible con --active */
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: translateX(1.5rem);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.slide--active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* * Flechas de navegación */
+.proximamente-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    line-height: 1;
+    z-index: 10;
+    padding: 0.25rem;
+    color: var(--c-negro);
+    transition: color var(--trans-fast);
+}
+
+.proximamente-arrow:hover {
+    color: var(--c-naranja);
+}
+
+.proximamente-arrow-left {
+    left: 0;
+}
+
+.proximamente-arrow-right {
+    right: 0;
+}
+
+/* * Columna de texto */
+.proximamente-content {
+    flex: 1 1 var(--col-break);
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    cursor: default;
+}
+
+.proximamente-content h2 {
+    text-transform: lowercase;
+    color: var(--c-naranja);
+    font-size: clamp(1.75rem, 3.5vw, 3rem);
+    font-weight: 700;
+    margin: 0 0 clamp(0.75rem, 2vw, 1.25rem);
+}
+
+.proximamente-content p {
+    max-width: 26rem;
+    margin: 0 0 clamp(0.75rem, 2vw, 1.25rem);
+    line-height: 1.65;
+    font-size: clamp(1rem, 1.15vw, 1.1rem);
+}
+
+.proximamente-down-arrow {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    margin: 0 0 clamp(0.75rem, 2vw, 1.25rem);
+    line-height: 1;
+}
+
+.proximamente-lista {
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+}
+
+.proximamente-lista li {
+    margin-bottom: 0.5rem;
+}
+
+.proximamente-lista a {
+    color: var(--c-negro);
+    text-decoration: underline;
+}
+
+
+/* *********************************************************
+   BOTON RESERVA
+   ********************************************************* */
+
+/* * Wrapper para centrar el botón entre secciones */
+.btn-reserva-wrap {
+    display: flex;
+    justify-content: center;
+    padding: clamp(2.5rem, 5vw, 4rem) var(--section-pad-h);
+}
+
+/* * Pill naranja con borde, hover a azul.
+     Dentro del .hero queda posicionado en la parte superior central.
+     También se puede usar en cualquier otra sección. */
+
+.btn-reserva {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65em 2em;
+    border: 2px solid var(--c-naranja);
+    border-radius: 99px;
+    color: var(--c-naranja);
+    font-family: var(--font-base);
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color var(--trans), border-color var(--trans), background var(--trans);
+    background: transparent;
+    text-decoration: none;
+}
+
+.btn-reserva:hover {
+    color: var(--c-azul);
+    border-color: var(--c-azul);
+    background: transparent;
+}
+
+/* *********************************************************
+   FOOTER
+   ********************************************************* */
+.footer-top {
+    background: var(--c-azul);
+    color: var(--c-negro);
+}
+
+/* * Fila superior: nav izquierda, contacto derecha */
+.footer-top-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: clamp(2rem, 5vw, 4rem);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+/* * Nav del footer en columna */
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+}
+
+.footer-nav a {
+    color: var(--c-negro);
+    text-transform: lowercase;
+    transition: opacity var(--trans-fast);
+}
+
+.footer-nav a:hover {
+    opacity: 0.65;
+}
+
+/* * Bloque de contacto: dirección + instagram */
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+}
+
+.footer-contact p {
+    margin: 0;
+    font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+    line-height: 1.55;
+    text-align: right;
+}
+
+/* * Fila de instagram con icono */
+.footer-instagram {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+    color: var(--c-negro);
+    transition: opacity var(--trans-fast);
+    text-decoration: none;
+}
+
+.footer-instagram:hover {
+    opacity: 0.65;
+}
+
+.footer-instagram svg {
+    width: 1.15em;
+    height: 1.15em;
+    flex-shrink: 0;
+}
+
+/* * Legal: links y copyright en línea con separador superior */
+.footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(0.5rem, 2vw, 1.5rem);
+    align-items: center;
+    font-size: clamp(0.8rem, 1vw, 0.9rem);
+    padding-top: clamp(0.75rem, 2vw, 1.25rem);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.footer-legal a {
+    color: var(--c-negro);
+    transition: opacity var(--trans-fast);
+}
+
+.footer-legal a:hover {
+    opacity: 0.65;
+}
+
+/* * Copyright: empuja hacia la derecha en escritorio */
+.footer-copyright {
+    margin-left: auto;
+}
+
+
+/* *********************************************************
+   RESPONSIVE
+   ********************************************************* */
+
+/* * Tablet (max 768px)
+     Las columnas ya se apilan solas gracias a flex-wrap y --col-break.
+     Solo ajustamos lo que no se adapta automáticamente. */
+@media (max-width: 768px) {
+
+    /* * Proximamente: slider debajo del texto */
+    .section-proximamente .section-inner {
+        flex-direction: column-reverse;
+    }
+
+    .proximamente-media,
+    .proximamente-content {
+        width: 100%;
+    }
+
+    .proximamente-media {
+        justify-content: center;
+    }
+
+    /* * Slider más ancho en tablet porque ocupa toda la columna */
+    .proximamente-slider {
+        max-width: clamp(18rem, 55vw, 26rem);
+    }
+
+    /* * Contacto alineado a la izquierda en tablet */
+    .footer-contact {
+        align-items: flex-start;
+    }
+
+    .footer-contact p {
+        text-align: left;
+    }
+
+    /* * Copyright en su propia línea */
+    .footer-copyright {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+/* * Movil (max 480px) */
 @media (max-width: 480px) {
-  /* Mantienen el padding vertical de 4rem de 768px, pero estrechan el lateral a 5vw */
-  .section {
-    padding: 4rem 5vw;
-  }
-  .hero {
-    padding: 1.5rem 5vw;
-  }
-  .main-nav {
-    font-size: .8rem;
-  }
-  .icono-links img,
-  .link-ver-mas-icono img {
-    width: .75rem;
-    height: .75rem;
-  }
-  /* mantener posición original de los recursos, no se mueven */
-  .proximamente-arrow { 
-    font-size: 1.8rem; 
-  }
+
+    /* * Hero */
+    .hero-stage {
+        width: 95vw;
+    }
+
+    /* * Nav */
+    .main-nav {
+        font-size: clamp(0.75rem, 3.5vw, 0.9rem);
+        top: 0.75rem;
+        right: 0.75rem;
+        gap: 0.2rem;
+    }
+
+    .icono-links img,
+    .link-ver-mas-icono img {
+        width: 0.8em;
+        height: 0.8em;
+    }
+
+    /* * Slider casi todo el ancho en móvil */
+    .proximamente-slider {
+        max-width: 80vw;
+    }
+
+    /* * Footer legal en columna */
+    .footer-legal {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+    }
+
+    .footer-copyright {
+        margin-left: 0;
+    }
+
+    .footer-contact {
+        align-items: flex-start;
+    }
+
+    .footer-contact p {
+        text-align: left;
+    }
+}
+
+/* * Movil muy pequeño (max 360px) */
+@media (max-width: 360px) {
+    .hero-stage {
+        width: 97vw;
+    }
 }
