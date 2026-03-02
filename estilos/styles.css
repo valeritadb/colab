@@ -192,7 +192,7 @@ html {
    esp-header: padding clamp(0.6rem,1.4vw,1.1rem) clamp(1.5rem,4vw,5vw)
    align-items:center en el flex parent centra verticalmente */
 .hero .main-nav {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     /* Misma altura que esp-header */
@@ -588,7 +588,7 @@ html {
 }
 
 .footer-nav a:hover {
-    opacity: 0.65;
+    color: var(--c-blanco);
 }
 
 /* * Bloque de contacto: dirección + instagram */
@@ -618,7 +618,7 @@ html {
 }
 
 .footer-instagram:hover {
-    opacity: 0.65;
+    color: var(--c-blanco);
 }
 
 .footer-instagram svg {
@@ -644,7 +644,7 @@ html {
 }
 
 .footer-legal a:hover {
-    opacity: 0.65;
+    color: var(--c-blanco);
 }
 
 /* * Copyright: empuja hacia la derecha en escritorio */
