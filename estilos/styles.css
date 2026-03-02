@@ -38,7 +38,7 @@
    ********************************************************* */
 @font-face {
     font-family: "FutureBK";
-    src: url("fonts/Futurebk.ttf") format("truetype");
+    src: url("7/fonts/Futurebk.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -604,6 +604,10 @@ html {
     font-size: clamp(0.95rem, 1.1vw, 1.1rem);
     line-height: 1.55;
     text-align: right;
+}
+
+.footer-contact p:hover{
+  color: var(--c-blanco);
 }
 
 /* * Fila de instagram con icono */
