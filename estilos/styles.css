@@ -38,7 +38,7 @@
    ********************************************************* */
 @font-face {
     font-family: "FutureBK";
-    src: url("7/fonts/Futurebk.ttf") format("truetype");
+    src: url("/fonts/Futurebk.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -165,6 +165,7 @@ html {
 
 /* * Hover solo sobre el texto COLAB */
 .hero-svg-text {
+    font-family: var(--font-display); /* "FutureBK", sans-serif */
     transition: fill var(--trans);
     cursor: default;
     pointer-events: all;
@@ -188,7 +189,7 @@ html {
     z-index: 20;
 }
 
-/* Nav del index: fixed, idéntico al esp-header de espacio.html
+/* Nav del index: absolute, idéntico al esp-header de espacio.html
    esp-header: padding clamp(0.6rem,1.4vw,1.1rem) clamp(1.5rem,4vw,5vw)
    align-items:center en el flex parent centra verticalmente */
 .hero .main-nav {
