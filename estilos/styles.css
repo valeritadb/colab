@@ -302,6 +302,7 @@ html {
     text-underline-offset: 0.4rem;
     margin: 0 0 clamp(1rem, 2.5vw, 1.75rem);
     line-height: 1;
+    cursor: default;
 }
 
 /* * Párrafos: mínimo legible en móvil, máximo cómodo en escritorio */
