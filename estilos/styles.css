@@ -168,7 +168,7 @@ html {
     font-family: var(--font-display); /* "FutureBK", sans-serif */
     transition: fill var(--trans);
     cursor: default;
-    pointer-events: none;
+    pointer-events:initial;
 }
 
 .hero-svg-text:hover {
