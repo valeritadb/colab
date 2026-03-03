@@ -1,0 +1,226 @@
+/* =========================================================
+   CONTENEDOR BASE
+   ========================================================= */
+.cnt-wrap {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 clamp(2rem, 5vw, 7vw);
+}
+
+/* =========================================================
+   SECCIÓN PRINCIPAL
+   ========================================================= */
+.cnt-section {
+  padding-top: clamp(6rem, 10vw, 9rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+/* =========================================================
+   GRID SUPERIOR: 2 columnas iguales
+   izquierda = título + texto + instagram
+   derecha = formulario
+   ========================================================= */
+.cnt-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 6rem);
+  align-items: start;
+  margin-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+/* =========================================================
+   COLUMNA IZQUIERDA — título, texto e instagram apilados
+   ========================================================= */
+.cnt-col-izq {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.cnt-titulo {
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 600;
+  color: var(--c-naranja);
+  text-decoration: underline;
+  text-decoration-thickness: 0.12rem;
+  text-underline-offset: 0.35rem;
+  line-height: 1;
+  margin: 0 0 clamp(1.25rem, 2.5vw, 2rem) 0;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.cnt-texto {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  width: 100%;
+  margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.cnt-texto p {
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  line-height: 1.65;
+  color: var(--c-negro);
+  margin: 0;
+}
+
+/* Instagram como párrafo nuevo bajo el texto */
+.cnt-ig {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: clamp(0.9rem, 1.05vw, 1rem);
+  color: var(--c-negro);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.cnt-ig:hover { opacity: 0.65; }
+
+.cnt-ig svg {
+  width: 1.15em;
+  height: 1.15em;
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   COLUMNA DERECHA — formulario
+   ========================================================= */
+.cnt-col-der {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+  padding-top: 0;
+}
+
+.cnt-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cnt-field label {
+  font-size: clamp(0.85rem, 0.95vw, 0.95rem);
+  color: var(--c-negro);
+}
+
+.cnt-field input,
+.cnt-field textarea {
+  width: 100%;
+  border: 3px solid var(--c-naranja);
+  border-radius: 8px;
+  padding: 0.6em 0.85em;
+  font-family: var(--font-base);
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  color: var(--c-negro);
+  background: var(--c-blanco);
+  outline: none;
+  resize: none;
+  transition: border-color 0.2s ease;
+}
+
+.cnt-field input:focus,
+.cnt-field textarea:focus {
+  border-color: var(--c-azul);
+}
+
+.cnt-field textarea {
+  min-height: 14rem;
+}
+
+.cnt-submit {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cnt-btn {
+  padding: 0.55em 2em;
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  border-width: 2px;
+  letter-spacing: 0.1em;
+}
+
+/* =========================================================
+   PARTE INFERIOR — mapa completamente centrado
+   ========================================================= */
+.cnt-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  width: 100%;
+}
+
+.cnt-mapa-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  width: 100%;
+}
+
+/* Mapa más grande para ocupar más pantalla */
+.cnt-mapa {
+  flex: 0 0 auto;
+  width: clamp(22rem, 50vw, 42rem);
+  border-radius: 4px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.cnt-mapa iframe {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  display: block;
+  border: 0;
+}
+
+.cnt-mapa-label {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
+}
+
+.cnt-mapa-flecha {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1;
+  color: var(--c-negro);
+}
+
+.cnt-mapa-texto {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  color: var(--c-negro);
+  white-space: nowrap;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 768px) {
+  .cnt-top {
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 5vw, 3rem);
+  }
+
+  .cnt-titulo { white-space: normal; }
+
+  .cnt-mapa-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cnt-mapa {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cnt-titulo {
+    font-size: clamp(1.8rem, 8vw, 2.8rem);
+    white-space: normal;
+  }
+}
