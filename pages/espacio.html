@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="COLAB — Espacio de coworking cerámico. Sala de tornos, espacios individuales y salas para grupos.">
+    <link rel="preload" href="../fonts/Futurebk.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="/estilos/espacio.css">
+    <link rel="stylesheet" href="/estilos/styles.css">
+    <title>Espacio — COLAB</title>
+</head>
+<body>
+
+
+<header class="esp-header">
+    <a href="/index.html" class="esp-logo" aria-label="COLAB — volver al inicio">
+        <span class="esp-logo-co">CO</span>
+        <span class="esp-logo-lab">LAB</span>
+    </a>
+    <nav class="main-nav" aria-label="Navegación principal">
+        <a href="/pages/espacio.html">
+            espacio
+            <span class="icono-links" aria-hidden="true">
+                <img class="icono-links-normal" src="/multi/recursos/asterisconaranja.svg" alt="">
+                <img class="icono-links-hover" src="/multi/recursos/azul_def_asterisco.svg" alt="">
+            </span>
+        </a>
+        <a href="/pages/servicios.html">
+            servicios
+            <span class="icono-links" aria-hidden="true">
+                <img class="icono-links-normal" src="/multi/recursos/asterisconaranja.svg" alt="">
+                <img class="icono-links-hover" src="/multi/recursos/azul_def_asterisco.svg" alt="">
+            </span>
+        </a>
+        <a href="/pages/contacto.html">
+            contacto
+            <span class="icono-links" aria-hidden="true">
+                <img class="icono-links-normal" src="/multi/recursos/asterisconaranja.svg" alt="">
+                <img class="icono-links-hover" src="/multi/recursos/azul_def_asterisco.svg" alt="">
+            </span>
+        </a>
+    </nav>
+</header>
+
+
+<main>
+
+    <!-- HERO: título + fila texto/gato centrada en pantalla -->
+    <section class="esp-hero">
+        <div class="esp-contenedor">
+            <div class="esp-hero-inner">
+
+            <!-- Fila: título+texto | ilustración -->
+            <div class="esp-hero-fila">
+                <div class="esp-hero-texto">
+                    <h1 class="esp-titulo">ESPACIO</h1>
+                    <p>
+                        COLAB es una iniciativa creada para ofrecer un lugar especializado
+                        a ceramistas que quieren desarrollar su actividad ya sea
+                        profesionalmente o no. Un espacio de encuentro donde colaborar
+                        y crear comunidad con la cerámica como nexo de unión.
+                    </p>
+                </div>
+                    <div class="esp-hero-ilus" aria-hidden="true">
+                        <img src="/multi/ilustraciones/ILUS ESPACIO.svg" alt="">
+                    </div>
+            </div>
+
+                <!-- Texto intro: mismo ancho que el bloque de arriba -->
+                <p class="esp-intro-texto">
+                    Nuestros objetivos principales son ofrecer servicios de calidad
+                    y garantizar un espacio respetuoso de trabajo. Velaremos por la
+                    convivencia en un buen ambiente y en las mejores condiciones.
+                    Disponemos de maquinaria especializada de uso compartido además
+                    de los módulos individuales y salas para grupos de trabajo.
+                </p>
+
+            </div><!-- /esp-hero-inner -->
+        </div>
+    </section>
+
+
+    <!-- GALERÍA MASONRY: 5 columnas, gap blanco, hover azul, lightbox al clic -->
+    <section class="esp-galeria" aria-label="Galería del espacio COLAB">
+        <div class="gal-grid">
+            <div class="gal-item"><img src="#" alt="Espacio COLAB"></div>
+            <div class="gal-item"><img src="#" alt="Espacio COLAB"></div>
+            <div class="gal-item"><img src="#" alt="Espacio COLAB"></div>
+            <div class="gal-item"><img src="#" alt="Espacio COLAB"></div>
+            <div class="gal-item"><img src="#" alt="Espacio COLAB"></div>
+            <div class="gal-item"><img src="#" alt="Espacio COLAB"></div>
+            <div class="gal-item"><img src="#" alt="Espacio COLAB"></div>
+            <div class="gal-item"><img src="#" alt="Espacio COLAB"></div>
+            <div class="gal-item"><img src="#" alt="Espacio COLAB"></div>
+            <div class="gal-item"><img src="#" alt="Espacio COLAB"></div>
+            <div class="gal-item"><img src="#" alt="Espacio COLAB"></div>
+            <div class="gal-item"><img src="#" alt="Espacio COLAB"></div>
+            <div class="gal-item"><img src="#" alt="Espacio COLAB"></div>
+            <div class="gal-item"><img src="#" alt="Espacio COLAB"></div>
+        </div>
+    </section>
+
+
+    <!-- SALA DE TORNOS: título en una sola línea, solapado sobre foto -->
+    <section class="esp-sala" id="sala-tornos">
+        <div class="esp-contenedor">
+            <div class="esp-sala-grid">
+                <div class="esp-sala-foto">
+                    <img src="#" alt="Sala de tornos">
+                </div>
+                <div class="esp-sala-derecha">
+                    <!-- Sin <br>: el CSS white-space:nowrap lo mantiene en una línea -->
+                    <h2 class="esp-subtitulo">SALA DE TORNOS</h2>
+                    <p>
+                        6 tornos que podrán ser utilizados por los usuarios o para
+                        realizar cursos dirigidos como máximo a 6 alumnos. Cuenta
+                        con una estantería y una zona de lavado.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ESPACIOS INDIVIDUALES: título+texto izq, foto der más ancha -->
+    <section class="esp-sala esp-sala--derecha" id="espacios-individuales">
+        <div class="esp-contenedor">
+            <div class="esp-sala-grid">
+                <div class="esp-sala-derecha">
+                    <h2 class="esp-subtitulo">ESPACIOS<br>INDIVIDUALES</h2>
+                    <p>
+                        Mesa de 150x80 estantería 90x200 para uso individual de
+                        estancia mínimo 1 mes. También podrás disponer de espacios
+                        individuales en mesa compartida de 8 plazas, para alquilar
+                        por horas, accesible para personas con movilidad reducida.
+                    </p>
+                </div>
+                <div class="esp-sala-foto esp-sala-foto--borde">
+                    <img src="#" alt="Espacios individuales">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SALAS PARA GRUPOS: título en cascada solapando esquina superior izquierda de la foto -->
+    <section class="esp-sala" id="salas-grupos">
+        <div class="esp-contenedor">
+            <div class="esp-sala-grid">
+                <div class="esp-sala-foto">
+                    <!-- Título flotante sobre la esquina sup-izq de la foto -->
+                    <h2 class="esp-subtitulo">
+                        <span class="linea1">SALAS PARA</span>
+                        <span class="linea2">GRUPOS</span>
+                    </h2>
+                    <img src="#" alt="Salas para grupos">
+                </div>
+                <div class="esp-sala-derecha">
+                    <p>
+                        3 salas, dos con aforo de 8 personas y una con aforo de 14
+                        personas, alquiler disponible por horas. Disponemos de un
+                        espacio para grupos de personas con movilidad reducida que
+                        tendrá uso preferente. Se pueden alquilar por horas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="btn-reserva-wrap">
+        <a href="#" class="btn-reserva">RESERVA</a>
+    </div>
+
+</main>
+
+
+<!-- *********************************************************
+         FOOTER
+         ********************************************************* -->
+    <footer id="contacto" class="section footer-top">
+
+        <!-- * Fila superior: nav izquierda, contacto derecha -->
+        <div class="footer-top-inner">
+
+            <!-- * Nav -->
+            <nav class="footer-nav" aria-label="Navegación footer">
+                <a href="/pages/espacio.html">espacio</a>
+                <a href="/pages/servicios.html">servicios</a>
+                <a href="/pages/contacto.html">contacto</a>
+            </nav>
+
+            <!-- * Contacto: dirección + instagram con icono -->
+            <div class="footer-contact">
+                <p>encuéntranos en<br><a href="https://maps.app.goo.gl/PqAtMPgG8r34Rif7A">Carrer de Franco Tormo, 21ac, Patraix, 46007 València, Valencia</a></p>
+                <!-- * Enlace de instagram con icono SVG inline -->
+                <a href="https://instagram.com/colab.coworkinglab"
+                   class="footer-instagram"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Instagram de COLAB">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+                         aria-hidden="true">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+                    </svg>
+                    colab.coworkinglab
+                </a>
+            </div>
+
+        </div>
+
+        <!-- * Legal — el año lo rellena el JS automáticamente -->
+        <div class="footer-legal">
+            <a href="#">aviso legal</a>
+            <a href="#">términos y condiciones</a>
+            <a href="#">política de cookies</a>
+            <p class="footer-copyright">© <span class="year"></span> COLAB by Prodesco. Todos los derechos reservados.
+            </p>
+        </div>
+
+    </footer>
+
+<script src="/scripts/script.js"></script>
+</body>
+</html>
